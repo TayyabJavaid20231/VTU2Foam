@@ -1,0 +1,45 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2306                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _fbf00d6b-20230626 OPENFOAM=2306 version=2306
+Arch   : "LSB;label=32;scalar=64"
+Exec   : foamToVTK -latestTime -no-boundary -fields (T U) -overwrite -name vtkfile
+Date   : Jan 07 2024
+Time   : 18:25:15
+Host   : LAPTOP-AAV8SQCQ
+PID    : 5510
+I/O    : uncollated
+Case   : /home/tayyab_javaid/OpenFOAM/tayyab_javaid-10/run/VTK2FoamCOnversion/test/mapfield
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Including fields (T U)
+
+Create time
+
+--> FOAM Warning :
+    From virtual void Foam::Time::readDict()
+    in file db/Time/TimeIO.C at line 416
+    Reading "system/controlDict" at line 17 to 32
+    Disabled binary format compression (inefficient/ineffective)
+Removing old directory "vtkfile"
+
+Initial memory 116776 kB
+Create mesh for time = 0
+
+VTK mesh topology: 0 s, 129132 kB
+Time: 0
+    volScalar    : T
+    volVector    : U
+    Internal  : "vtkfile/mapfield_0/internal.vtu"
+Wrote in 0.16 s, 180056 kB
+
+End: 0.16 s, 180056 kB (peak)
+
