@@ -1,0 +1,105 @@
+/*--------------------------------*- C++ -*----------------------------------*\   
+| =========                 |                                                 |    
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |  
+|  \\    /   O peration     | Version:  v2206                                 |  
+|   \\  /    A nd           | Website:  www.openfoam.com                      |  
+|    \\/     M anipulation  |                                                 |  
+\*---------------------------------------------------------------------------*/   
+FoamFile                                                                           
+{                                                                                  
+    version     2.0;                                                               
+    format      ascii;                                                             
+    class       dictionary;                                                        
+    object      blockMeshDict;                                                     
+}                                                                                  
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //    
+                                                                                   
+domain                                                                             
+{                                                                                  
+   xMin        -10; 
+   xMax        30; 
+   yMin        -10; 
+   yMax        10; 
+   zMin        -0.5; 
+   zMax        -0.49375; 
+}                                                                                  
+                                                                                   
+vertices                                                                           
+(                                                                                  
+   ($domain.xMin   $domain.yMin $domain.zMin)                                      
+   ($domain.xMax   $domain.yMin $domain.zMin)                                      
+   ($domain.xMax   $domain.yMax $domain.zMin)                                      
+   ($domain.xMin   $domain.yMax $domain.zMin)                                      
+                                                                                   
+   ($domain.xMin   $domain.yMin $domain.zMax)                                      
+   ($domain.xMax   $domain.yMin $domain.zMax)                                      
+   ($domain.xMax   $domain.yMax $domain.zMax)                                      
+   ($domain.xMin   $domain.yMax $domain.zMax)                                      
+);                                                                                 
+                                                                                   
+blocks                                                                             
+(                                                                                  
+   hex (0 1 2 3 4 5 6 7)                                                           
+   (200 100 1) 
+   simpleGrading (1 1 1)                                                           
+);                                                                                 
+                                                                                   
+boundary                                                                           
+(                                                                                  
+   inlet                                                                           
+   {                                                                               
+       type patch;                                                                 
+       faces                                                                       
+       (                                                                           
+           (0 4 7 3)                                                               
+       );                                                                          
+   }                                                                               
+                                                                                   
+   outlet                                                                          
+   {                                                                               
+       type patch;                                                                 
+       faces                                                                       
+       (                                                                           
+           (1 2 6 5)                                                               
+       );                                                                          
+                                                                                   
+   }                                                                               
+   top                                                                             
+                                                                                   
+   {                                                                               
+       type patch;                                                                 
+       faces                                                                       
+       (                                                                           
+           (2 3 7 6)                                                               
+       );                                                                          
+   }                                                                               
+                                                                                   
+   bottom                                                                          
+   {                                                                               
+       type patch;                                                                 
+       faces                                                                       
+       (                                                                           
+           (0 1 5 4)                                                               
+       );                                                                          
+   }                                                                               
+                                                                                   
+   symBack                                                                         
+   {                                                                               
+       type symmetryPlane;                                                         
+       faces                                                                       
+       (                                                                           
+           (0 1 2 3)                                                               
+       );                                                                          
+   }                                                                               
+                                                                                   
+   symFront                                                                        
+   {                                                                               
+       type symmetryPlane;                                                         
+       faces                                                                       
+       (                                                                           
+           (4 5 6 7)                                                               
+       );                                                                          
+   }                                                                               
+);                                                                                 
+                                                                                   
+// ************************************************************************* //    
